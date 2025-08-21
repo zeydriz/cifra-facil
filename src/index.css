@@ -2,41 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Musical Design System - Modern Chord App Inspired */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Musical Color Palette */
+    --background: 250 100% 99%;
+    --foreground: 260 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 260 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 260 15% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Musical Purple */
+    --primary: 270 91% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 270 50% 95%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Musical Blue */
+    --secondary: 220 60% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-soft: 220 30% 96%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent - Musical Gold */
+    --accent: 45 95% 60%;
+    --accent-foreground: 260 15% 15%;
+    --accent-soft: 45 50% 95%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 250 20% 96%;
+    --muted-foreground: 260 10% 50%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 250 20% 90%;
+    --input: 250 20% 94%;
+    --ring: 270 91% 65%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Musical Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(270 91% 65%), hsl(280 85% 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(220 60% 50%), hsl(230 65% 55%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 95% 60%), hsl(35 90% 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(270 91% 65%) 0%, hsl(220 60% 50%) 50%, hsl(45 95% 60%) 100%);
+    
+    /* Musical Shadows */
+    --shadow-musical: 0 4px 20px hsl(270 91% 65% / 0.15);
+    --shadow-card: 0 2px 10px hsl(260 15% 15% / 0.1);
+    --shadow-elevated: 0 8px 30px hsl(270 91% 65% / 0.2);
+
+    /* Typography */
+    --font-musical: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-chord: 'JetBrains Mono', 'Courier New', monospace;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +76,61 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark Musical Theme */
+    --background: 260 25% 8%;
+    --foreground: 250 20% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 260 20% 12%;
+    --card-foreground: 250 20% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 260 20% 12%;
+    --popover-foreground: 250 20% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Primary - Brighter Musical Purple for dark */
+    --primary: 270 85% 75%;
+    --primary-foreground: 260 25% 8%;
+    --primary-soft: 270 30% 15%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Secondary - Musical Blue Dark */
+    --secondary: 220 50% 40%;
+    --secondary-foreground: 250 20% 95%;
+    --secondary-soft: 220 20% 15%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    /* Accent - Musical Gold Dark */
+    --accent: 45 85% 70%;
+    --accent-foreground: 260 25% 8%;
+    --accent-soft: 45 20% 15%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --muted: 260 15% 18%;
+    --muted-foreground: 250 10% 65%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 65%;
+    --destructive-foreground: 260 25% 8%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 260 15% 20%;
+    --input: 260 15% 16%;
+    --ring: 270 85% 75%;
+
+    /* Dark Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(270 85% 75%), hsl(280 80% 80%));
+    --gradient-secondary: linear-gradient(135deg, hsl(220 50% 40%), hsl(230 55% 45%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 85% 70%), hsl(35 80% 75%));
+    --gradient-hero: linear-gradient(135deg, hsl(270 85% 75%) 0%, hsl(220 50% 40%) 50%, hsl(45 85% 70%) 100%);
+    
+    /* Dark Shadows */
+    --shadow-musical: 0 4px 20px hsl(270 85% 75% / 0.2);
+    --shadow-card: 0 2px 10px hsl(0 0% 0% / 0.3);
+    --shadow-elevated: 0 8px 30px hsl(270 85% 75% / 0.25);
+
+    /* Sidebar Dark */
+    --sidebar-background: 260 20% 10%;
+    --sidebar-foreground: 250 15% 85%;
+    --sidebar-primary: 270 85% 75%;
+    --sidebar-primary-foreground: 260 25% 8%;
+    --sidebar-accent: 260 15% 18%;
+    --sidebar-accent-foreground: 250 15% 85%;
+    --sidebar-border: 260 15% 20%;
+    --sidebar-ring: 270 85% 75%;
   }
 }
 
@@ -100,6 +140,94 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-[var(--font-musical)];
+  }
+
+  /* Musical Typography Classes */
+  .chord-text {
+    font-family: var(--font-chord);
+    @apply font-mono text-sm leading-relaxed;
+  }
+
+  /* Musical Components */
+  .musical-card {
+    @apply bg-card rounded-lg shadow-[var(--shadow-card)] border border-border/50;
+  }
+
+  /* Line Clamp Utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .musical-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .musical-button {
+    @apply bg-primary text-primary-foreground rounded-lg px-4 py-2 font-medium transition-all duration-200 hover:shadow-[var(--shadow-musical)] hover:scale-105;
+  }
+
+  /* Scrollbar Styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-muted rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full hover:bg-primary/70;
+  }
+}
+
+@layer components {
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-musical-pulse {
+    animation: musicalPulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes musicalPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.7);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 10px hsl(var(--primary) / 0);
   }
 }
