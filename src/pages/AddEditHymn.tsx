@@ -24,11 +24,16 @@ export default function AddEditHymn() {
   const [formData, setFormData] = useState({
     title: '',
     number: '',
-    category: 'custom' as const,
+    category: 'custom',
     key: '',
     lyrics: '',
     chords: ''
   });
+
+  const [newCategory, setNewCategory] = useState('');
+  const [newKey, setNewKey] = useState('');
+  const [showNewCategoryInput, setShowNewCategoryInput] = useState(false);
+  const [showNewKeyInput, setShowNewKeyInput] = useState(false);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -104,6 +109,48 @@ export default function AddEditHymn() {
   };
 
   const keys = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+  
+  const categories = [
+    { value: 'custom', label: 'Personalizado' },
+    { value: 'harpa-crista', label: 'Harpa Cristã' },
+    { value: 'louvores-gerais', label: 'Louvores Gerais' }
+  ];
+
+  const handleCategoryChange = (value: string) => {
+    if (value === 'novo') {
+      setShowNewCategoryInput(true);
+      setNewCategory('');
+    } else {
+      setShowNewCategoryInput(false);
+      handleInputChange('category', value);
+    }
+  };
+
+  const handleKeyChange = (value: string) => {
+    if (value === 'novo') {
+      setShowNewKeyInput(true);
+      setNewKey('');
+    } else {
+      setShowNewKeyInput(false);
+      handleInputChange('key', value);
+    }
+  };
+
+  const handleNewCategoryConfirm = () => {
+    if (newCategory.trim()) {
+      handleInputChange('category', newCategory.trim());
+      setShowNewCategoryInput(false);
+      setNewCategory('');
+    }
+  };
+
+  const handleNewKeyConfirm = () => {
+    if (newKey.trim()) {
+      handleInputChange('key', newKey.trim());
+      setShowNewKeyInput(false);
+      setNewKey('');
+    }
+  };
 
   return (
     <div className={`min-h-screen p-6 ${getFontSizeClass()}`}>
@@ -160,36 +207,82 @@ export default function AddEditHymn() {
 
               <div className="space-y-2">
                 <Label htmlFor="category">Categoria</Label>
-                <Select 
-                  value={formData.category} 
-                  onValueChange={(value) => handleInputChange('category', value)}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="custom">Personalizado</SelectItem>
-                    <SelectItem value="harpa-crista">Harpa Cristã</SelectItem>
-                    <SelectItem value="louvores-gerais">Louvores Gerais</SelectItem>
-                  </SelectContent>
-                </Select>
+                {showNewCategoryInput ? (
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="Nome da nova categoria"
+                      value={newCategory}
+                      onChange={(e) => setNewCategory(e.target.value)}
+                      onKeyPress={(e) => e.key === 'Enter' && handleNewCategoryConfirm()}
+                    />
+                    <Button type="button" size="sm" onClick={handleNewCategoryConfirm}>
+                      OK
+                    </Button>
+                    <Button 
+                      type="button" 
+                      size="sm" 
+                      variant="outline" 
+                      onClick={() => setShowNewCategoryInput(false)}
+                    >
+                      Cancelar
+                    </Button>
+                  </div>
+                ) : (
+                  <Select 
+                    value={formData.category} 
+                    onValueChange={handleCategoryChange}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {categories.map(cat => (
+                        <SelectItem key={cat.value} value={cat.value}>{cat.label}</SelectItem>
+                      ))}
+                      <SelectItem value="novo">+ Criar nova categoria</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )}
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="key">Tom</Label>
-                <Select 
-                  value={formData.key} 
-                  onValueChange={(value) => handleInputChange('key', value)}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecione o tom" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {keys.map(key => (
-                      <SelectItem key={key} value={key}>{key}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                {showNewKeyInput ? (
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="Digite o novo tom (ex: C#m, F7, etc.)"
+                      value={newKey}
+                      onChange={(e) => setNewKey(e.target.value)}
+                      onKeyPress={(e) => e.key === 'Enter' && handleNewKeyConfirm()}
+                    />
+                    <Button type="button" size="sm" onClick={handleNewKeyConfirm}>
+                      OK
+                    </Button>
+                    <Button 
+                      type="button" 
+                      size="sm" 
+                      variant="outline" 
+                      onClick={() => setShowNewKeyInput(false)}
+                    >
+                      Cancelar
+                    </Button>
+                  </div>
+                ) : (
+                  <Select 
+                    value={formData.key} 
+                    onValueChange={handleKeyChange}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione o tom" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {keys.map(key => (
+                        <SelectItem key={key} value={key}>{key}</SelectItem>
+                      ))}
+                      <SelectItem value="novo">+ Criar novo tom</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )}
               </div>
             </div>
 

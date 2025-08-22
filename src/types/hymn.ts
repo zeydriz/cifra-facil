@@ -2,7 +2,7 @@ export interface Hymn {
   id: string;
   title: string;
   number?: number;
-  category: 'harpa-crista' | 'louvores-gerais' | 'custom';
+  category: string;
   key?: string; // tonalidade
   lyrics: string;
   chords?: string;

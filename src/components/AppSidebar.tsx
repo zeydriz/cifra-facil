@@ -23,7 +23,8 @@ const menuItems = [
 ];
 
 export function AppSidebar() {
-  const { collapsed } = useSidebar();
+  const { state } = useSidebar();
+  const collapsed = state === "collapsed";
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -36,7 +37,7 @@ export function AppSidebar() {
   return (
     <Sidebar
       className={collapsed ? "w-16" : "w-64"}
-      collapsible
+      collapsible="icon"
     >
       <SidebarContent className="bg-gradient-musical">
         {/* Header */}
@@ -47,7 +48,7 @@ export function AppSidebar() {
             </div>
             {!collapsed && (
               <div>
-                <h1 className="text-white font-bold text-lg">CifraApp</h1>
+                <h1 className="text-white font-bold text-lg">CifraHino</h1>
                 <p className="text-white/70 text-sm">Hinos & Louvores</p>
               </div>
             )}
