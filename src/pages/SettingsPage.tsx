@@ -26,7 +26,7 @@ export default function SettingsPage() {
           <div>
             <h1 className="text-3xl font-bold">Configurações</h1>
             <p className="text-muted-foreground">
-              Personalize sua experiência no CifraHino
+              Personalize sua experiência no Cifraino
             </p>
           </div>
         </div>
@@ -111,14 +111,14 @@ export default function SettingsPage() {
         {/* App Info */}
         <Card className="musical-card">
           <CardHeader>
-            <CardTitle>Sobre o CifraHino</CardTitle>
+            <CardTitle>Sobre o Cifraino</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="text-center py-6">
               <div className="w-16 h-16 bg-gradient-musical rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Settings className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">CifraHino</h3>
+              <h3 className="text-lg font-semibold mb-2">Cifraino</h3>
               <p className="text-muted-foreground">
                 Sua coleção completa de hinos e louvores com cifras
               </p>

@@ -76,7 +76,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative z-10">
           <h1 className="text-4xl font-bold mb-4 animate-fade-in">
-            Bem-vindo ao CifraHino
+            Bem-vindo ao Cifraino
           </h1>
           <p className="text-xl mb-6 text-white/90 animate-slide-up">
             Sua coleção completa de hinos e louvores com cifras
